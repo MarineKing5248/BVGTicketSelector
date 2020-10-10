@@ -1,0 +1,49 @@
+.mainPage {
+    display: flex;
+    flex: 1 1 0px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.titleSection {
+    background-image: url('./images/berlinStreet.jpg');
+    height: 100vh;
+    width: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mainPage .titleSection h1,
+.mainPage .titleSection h2 {
+    color: white;
+    text-align: center;
+}
+
+.mainPage h1 {
+    margin: 4em auto;
+}
+
+.mainPage h2 {
+    margin: 1em;
+}
+
+@media(max-width: 768px) {
+    .mainPage {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .titleSection {
+        background-image: url('./images/berlinStreet.jpg');
+        height: 50vh;
+        width: 100%;
+    }
+
+    .mainPage .titleSection h1 {      
+        margin: 2em auto
+    }
+
+    .mainPage .titleSection h2 {
+        margin-bottom: 2em
+    }
+}

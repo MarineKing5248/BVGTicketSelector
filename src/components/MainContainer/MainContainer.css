@@ -1,0 +1,18 @@
+.mainContainer {
+    width: 50vh
+}
+
+.mainContainer h2 {
+    color: black
+}
+
+@media(max-width: 768px) {
+    .mainPage {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mainContainer {
+        width: auto
+    }
+}
