@@ -1,5 +1,6 @@
 import React from 'react';
 import { Wizard, Step, Controls } from 'react-decision-tree-flow';
+import Conclusion from "../Conclusion/Conclusion";
 import './DecisionTree.css';
 
 const tree = {
@@ -159,7 +160,7 @@ export default class DecisionTree extends React.Component {
                         </div>
                     </Step>
                     <Step name="conclusion">
-                        <div className="stepContent"></div>
+                        <Conclusion touristNumber={touristNumber} isStudent={isStudent} days={days} bikes={bikes} />
                     </Step>
                 </Wizard>
             </div>
