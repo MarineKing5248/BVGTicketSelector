@@ -1,219 +1,168 @@
 import React from 'react';
 import { Wizard, Step, Controls } from 'react-decision-tree-flow';
-// import NextStep from './components/NextStep';
+import './DecisionTree.css';
 
 const tree = {
-  touristNumber: ['oneTourist', 'daysInBerlin'],
-  oneTourist: ['junior', 'daysInBerlin'],
-  junior: ['daysInBerlin'],
-  daysInBerlin: ['oneDay', 'twoDays', 'threeDays', 'oneWeek', 'oneMonth', 'oneYear'],
-  oneDay: ['withBikes', 'conclusion'],
-  twoDays: ['withBikes', 'conclusion'],
-  threeDays: ['withBikes', 'conclusion'],
-  oneWeek: ['withBikes', 'conclusion'],
-  oneMonth: ['withBikes', 'conclusion'],
-  oneYear: ['withBikes', 'conclusion'],
-  withBikes: ['conclusion'],
-  conclusion: []
+    touristNumber: ['oneTourist', 'moreTourists'],
+    oneTourist: ['junior', 'daysInBerlin'],
+    moreTourists: ['daysInBerlin'],
+    junior: ['daysInBerlin'],
+    daysInBerlin: ['withBikes'],
+    withBikes: ['bikesNumber', 'conclusion'],
+    bikesNumber: ['conclusion'],
+    conclusion: []
 };
 
 export default class DecisionTree extends React.Component {
     constructor(props) {
-      super(props);
-      this.state = {
-          touristNumber: 1,
-      };
-      this.handleButtonClick = this.handleButtonClick.bind(this);
-  }
+        super(props);
+        this.state = {
+            touristNumber: 2,
+            isStudent: false,
+            days: 1,
+            bikes: 0
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-  handleButtonClick(event) {
-    const { name, value } = event.target;
-    this.setState({ [name]: value, submitDataError: null });
-  }
+    handleChange(event) {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
+    }
 
-  render() {
-    const { touristNumber } = this.state;
-    return (
-      <Wizard tree={tree} first="touristNumber">
-        <Step name="touristNumber">
-          <div>
-            How many people in your group?
-            <br />
-            <Controls>
-              {({ destinations: { oneTourist, daysInBerlin }}) => (
-                <div>
-                  <button onClick={() => {
-                      oneTourist();
-                      this.setState({ touristNumber: 1 });
-                    }}>I am alone</button>
-                  <button onClick={() => {
-                      oneTourist();
-                      this.setState({ touristNumber: 2 });
-                    }}>2 people</button>
-                  <button onClick={daysInBerlin}>3 or more people</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="oneTourist">
-          <div>
-            How old are you?
-            <br />
-            <Controls>
-              {({ destinations: { junior, daysInBerlin }, back }) => (
-                <div>
-                  <button onClick={junior}>0-18 years old</button>
-                  <button onClick={daysInBerlin}>18-64 years old</button>
-                  <button onClick={daysInBerlin}>over 64 years old</button>
-                  <button onClick={back}>Back</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="junior">
-          <div>
-            Are you a student?
-            <br />
-            <Controls>
-              {({ destinations: { daysInBerlin } }) => (
-                <div>
-                  <button onClick={daysInBerlin}>Yes, I am a student</button>
-                  <button onClick={daysInBerlin}>No, I am not a student</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="daysInBerlin">
-          <div>
-            How many day are you planning to stay in Berlin?
-            <br />
-            <Controls>
-              {({ destinations: { oneDay, twoDays, threeDays, oneWeek, oneMonth, oneYear } }) => (
-                <div>
-                  <button onClick={oneDay}>one day</button>
-                  <button onClick={twoDays}>two days</button>
-                  <button onClick={threeDays}>3 days</button>
-                  <button onClick={oneWeek}>up to 7 days</button>
-                  <button onClick={oneMonth}>up to 1 month</button>
-                  <button onClick={oneYear}>up to 1 year</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="oneDay">
-          <div>
-            Will you bring a bike with you?
-            <br />
-            <Controls>
-              {({ destinations: { withBikes, conclusion } }) => (
-                <div>
-                  <button onClick={withBikes}>yes</button>
-                  <button onClick={conclusion}>no</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="twoDays">
-          <div>
-            Will you bring a bike with you?
-            <br />
-            <Controls>
-              {({ destinations: { withBikes, conclusion } }) => (
-                <div>
-                  <button onClick={withBikes}>yes</button>
-                  <button onClick={conclusion}>no</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="threeDays">
-          <div>
-            Will you bring a bike with you?
-            <br />
-            <Controls>
-              {({ destinations: { withBikes, conclusion } }) => (
-                <div>
-                  <button onClick={withBikes}>yes</button>
-                  <button onClick={conclusion}>no</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="oneWeek">
-          <div>
-            Will you bring a bike with you?
-            <br />
-            <Controls>
-              {({ destinations: { withBikes, conclusion } }) => (
-                <div>
-                  <button onClick={withBikes}>yes</button>
-                  <button onClick={conclusion}>no</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="oneMonth">
-          <div>
-            Will you bring a bike with you?
-            <br />
-            <Controls>
-              {({ destinations: { withBikes, conclusion } }) => (
-                <div>
-                  <button onClick={withBikes}>yes</button>
-                  <button onClick={conclusion}>no</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="oneYear">
-          <div>
-            So you decide to live in Berlin now, you should first find an apartment... will you bring a bike with you?
-            <br />
-            <Controls>
-              {({ destinations: { withBikes, conclusion } }) => (
-                <div>
-                  <button onClick={withBikes}>yes</button>
-                  <button onClick={conclusion}>no</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="withBikes">
-          <div>
-            How many bikes will you bring with you?
-            <br />
-            <Controls>
-              {({ destinations: { conclusion } }) => (
-                <div>
-                  <button onClick={conclusion}>TODO: add number input for it</button>
-                </div>
-              )}
-            </Controls>
-          </div>
-        </Step>
-        <Step name="conclusion">
-          <div></div>
-        </Step>
-        <Step name="error">
-          <div>
-            I am error
-            <br />
-            <Controls>
-              {({ back }) => <button onClick={back}>Go back to Step 2</button>}
-            </Controls>
-          </div>
-        </Step>
-      </Wizard>
-    );
-  }
+    render() {
+        const { touristNumber, isStudent, days, bikes } = this.state;
+        return (
+            <div className="decisionTreeContainer">
+                <Wizard tree={tree} first="touristNumber">
+                    <Step name="touristNumber">
+                        <div className="stepContent">
+                            Are you visiting Berlin alone?
+                            <br />
+                            <Controls>
+                            {({ destinations: { oneTourist, moreTourists }}) => (
+                                <div>
+                                    <button onClick={() => {
+                                        oneTourist();
+                                        this.setState({ touristNumber: 1 });
+                                        }}>Yes</button>
+                                    <button onClick={moreTourists}>No</button>
+                                </div>
+                            )}
+                            </Controls>
+                        </div>
+                    </Step>
+                    <Step name="oneTourist">
+                        <div className="stepContent">
+                            How old are you?
+                            <br />
+                            <Controls>
+                            {({ destinations: { junior, daysInBerlin }, back }) => (
+                                <div>
+                                    <button onClick={junior}>up to 24 years old</button>
+                                    <button onClick={daysInBerlin}>over 24 years old</button>
+                                    <button onClick={back}>Back</button>
+                                </div>
+                            )}
+                            </Controls>
+                        </div>
+                    </Step>
+                    <Step name="moreTourists">
+                        <div className="stepContent">
+                            How many people are travelling with you?
+                            <br />
+                            <Controls>
+                            {({ destinations: { daysInBerlin }, back }) => (
+                                <div>
+                                    <input type="number" min="2" step="1" name="touristNumber"
+                                    onChange={this.handleChange} value={touristNumber} />
+                                    <button onClick={daysInBerlin}>Next</button>
+                                    <button onClick={back}>Back</button>
+                                </div>
+                            )}
+                            </Controls>
+                        </div>
+                    </Step>
+                    <Step name="junior">
+                    <div className="stepContent">
+                        Are you a student?
+                        <br />
+                        <Controls>
+                        {({ destinations: { daysInBerlin }, back }) => (
+                            <div>
+                                <button onClick={() => {
+                                    daysInBerlin();
+                                    this.setState({ isStudent: true });
+                                }}>Yes, I am a student</button>
+                                <button onClick={() => {
+                                    daysInBerlin();
+                                    this.setState({ isStudent: false });
+                                }}>No, I am not a student</button>
+                                <button onClick={back}>Back</button>
+                            </div>
+                        )}
+                        </Controls>
+                    </div>
+                    </Step>
+                    <Step name="daysInBerlin">
+                        <div className="stepContent">
+                            How many day are you planning to stay in Berlin?
+                            <br />
+                            <Controls>
+                            {({ destinations: { withBikes }, back }) => (
+                                <div>
+                                    <input type="number" min="1" step="1" name="days"
+                                    onChange={this.handleChange} value={days} />
+                                    <button onClick={withBikes}>Next</button>
+                                    <button onClick={back}>Back</button>
+                                </div>
+                            )}
+                            </Controls>
+                        </div>
+                    </Step>
+                    <Step name="withBikes">
+                        <div className="stepContent">
+                            Are you going to bring your bike(s) with you?
+                            <br />
+                            <Controls>
+                            {({ destinations: { conclusion, bikesNumber }, back }) => (
+                                <div>
+                                    <button onClick={
+                                        () => {
+                                            bikesNumber();
+                                            this.setState({ bikesNumber: 1 });
+                                        }}>Yes</button>
+                                    <button onClick={() => {
+                                            conclusion();
+                                            this.setState({ bikesNumber: 0 });
+                                        }}>No</button>
+                                    <button onClick={back}>Back</button>
+                                </div>
+                            )}
+                            </Controls>
+                        </div>
+                    </Step>
+                    <Step name="bikesNumber">
+                        <div className="stepContent">
+                            How many bikes will you bring together with you?
+                            <br />
+                            <Controls>
+                            {({ destinations: { conclusion }, back }) => (
+                                <div>
+                                    <input type="number" min="1" step="1" name="bikes"
+                                    onChange={this.handleChange} value={bikes} />
+                                    <button onClick={conclusion}>Next</button>
+                                    <button onClick={back}>Back</button>
+                                </div>
+                            )}
+                            </Controls>
+                        </div>
+                    </Step>
+                    <Step name="conclusion">
+                        <div className="stepContent"></div>
+                    </Step>
+                </Wizard>
+            </div>
+        );
+    }
 };

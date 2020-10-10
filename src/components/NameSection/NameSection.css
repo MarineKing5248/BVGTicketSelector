@@ -1,0 +1,34 @@
+.nameSectionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.nameSectionContainer * {
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+.nameSectionContainer .errorMessage {
+    color: red
+}
+
+.nameSectionContainer input[type=text] {
+    width: 60%;
+    padding: 0.5em 1em;
+    box-sizing: border-box;
+}
+
+.nameSectionContainer button {
+    width: 8em;
+    color: white;
+    background: #4C8FFB;
+    border: 1px #3079ED solid;
+    box-shadow: inset 0 1px 0 #80B0FB;
+}
+
+.nameSectionContainer button:hover {
+    border: 1px #2F5BB7 solid;
+    box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 #5A94F1;
+    background: #3F83F1;
+}

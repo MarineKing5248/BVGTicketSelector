@@ -2,12 +2,6 @@ import React from 'react';
 import MainContainer from './components/MainContainer/MainContainer';
 import './index.css';
 
-const styles = {
-    paperContainer: {
-        backgroundImage: "url('../public/images/berlinSbahn.jpg')"
-    }
-};
-
 export default function App() {
     return (
         <div className="mainPage">

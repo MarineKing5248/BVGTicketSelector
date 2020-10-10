@@ -1,9 +1,6 @@
 .mainContainer {
-    width: 50vh
-}
-
-.mainContainer h2 {
-    color: black
+    width: 50vh;
+    align-items: center;
 }
 
 @media(max-width: 768px) {
