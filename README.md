@@ -2,7 +2,7 @@
 
 ## How to use
 
-Clone this app [or down the repo](https://github.com/MarineKing5248/BVGTicketSelector/archive/main.zip):
+Clone this repo [or download the app](https://github.com/MarineKing5248/BVGTicketSelector/archive/main.zip):
 
 ```sh
 git clone https://github.com/MarineKing5248/BVGTicketSelector.git
