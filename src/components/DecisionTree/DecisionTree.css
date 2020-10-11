@@ -1,35 +1,73 @@
 .decisionTreeContainer {
     margin: auto;
-    align-items: center;
-}
-
-.decisionTreeContainer {
     display: flex;
     flex-direction: column;
     align-items: left;
 }
 
-.decisionTreeContainer * {
-    margin-left: 2em;
+.decisionTreeContainer .stepContent {
+    margin: auto auto 1em 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.decisionTreeContainer .stepContent .buttonContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.decisionTreeContainer h4 {
     margin-bottom: 1em;
 }
 
-.decisionTreeContainer input[type=text] {
-    width: 60%;
+.decisionTreeContainer input[type=number] {
+    width: 40%;
+    min-width: 12em;
     padding: 0.5em 1em;
     box-sizing: border-box;
+    margin-bottom: 2em;
 }
 
-.decisionTreeContainer button {
-    width: 8em;
+.decisionTreeContainer .stepContent .buttonContainer button {
+    width: 12em;
+    height: 2em;
+    margin-bottom: 2em;
     color: white;
     background: #4C8FFB;
     border: 1px #3079ED solid;
     box-shadow: inset 0 1px 0 #80B0FB;
 }
 
-.decisionTreeContainer button:hover {
+.decisionTreeContainer .stepContent .buttonContainer button:hover {
     border: 1px #2F5BB7 solid;
     box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 #5A94F1;
     background: #3F83F1;
+}
+
+.decisionTreeContainer .stepContent .buttonContainer button.backButton {
+    color: white;
+    background: #fb664c;
+    border: 1px #ed5630 solid;
+    box-shadow: inset 0 1px 0 #fba380;
+}
+
+.decisionTreeContainer .stepContent .buttonContainer button.backButton:hover {
+    border: 1px #b7612f solid;
+    box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 #f1c95a;
+    background: #f15a3f;
+}
+
+@media(max-width: 768px) {
+    .decisionTreeContainer {
+        align-items: center;
+
+    }
+
+    .decisionTreeContainer * {
+        margin: auto;
+    }
+
+    .decisionTreeContainer input[type=text] {
+        width: 80%
+    }
 }

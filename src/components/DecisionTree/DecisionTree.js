@@ -38,11 +38,10 @@ export default class DecisionTree extends React.Component {
                 <Wizard tree={tree} first="touristNumber">
                     <Step name="touristNumber">
                         <div className="stepContent">
-                            Are you visiting Berlin alone?
-                            <br />
+                            <h4>Are you visiting Berlin alone?</h4>
                             <Controls>
                             {({ destinations: { oneTourist, moreTourists }}) => (
-                                <div>
+                                <div className="buttonContainer">
                                     <button onClick={() => {
                                         oneTourist();
                                         this.setState({ touristNumber: 1 });
@@ -55,14 +54,13 @@ export default class DecisionTree extends React.Component {
                     </Step>
                     <Step name="oneTourist">
                         <div className="stepContent">
-                            How old are you?
-                            <br />
+                            <h4>How old are you?</h4>
                             <Controls>
                             {({ destinations: { junior, daysInBerlin }, back }) => (
-                                <div>
+                                <div className="buttonContainer">
                                     <button onClick={junior}>up to 24 years old</button>
                                     <button onClick={daysInBerlin}>over 24 years old</button>
-                                    <button onClick={back}>Back</button>
+                                    <button className="backButton" onClick={back}>Back</button>
                                 </div>
                             )}
                             </Controls>
@@ -70,15 +68,14 @@ export default class DecisionTree extends React.Component {
                     </Step>
                     <Step name="moreTourists">
                         <div className="stepContent">
-                            How many people are travelling with you?
-                            <br />
+                            <h4>How many people are travelling with you?</h4>
                             <Controls>
                             {({ destinations: { daysInBerlin }, back }) => (
-                                <div>
+                                <div className="buttonContainer">
                                     <input type="number" min="2" step="1" name="touristNumber"
                                     onChange={this.handleChange} value={touristNumber} />
                                     <button onClick={daysInBerlin}>Next</button>
-                                    <button onClick={back}>Back</button>
+                                    <button className="backButton" onClick={back}>Back</button>
                                 </div>
                             )}
                             </Controls>
@@ -86,11 +83,10 @@ export default class DecisionTree extends React.Component {
                     </Step>
                     <Step name="junior">
                     <div className="stepContent">
-                        Are you a student?
-                        <br />
+                        <h4>Are you a student?</h4>
                         <Controls>
                         {({ destinations: { daysInBerlin }, back }) => (
-                            <div>
+                            <div className="buttonContainer">
                                 <button onClick={() => {
                                     daysInBerlin();
                                     this.setState({ isStudent: true });
@@ -99,7 +95,7 @@ export default class DecisionTree extends React.Component {
                                     daysInBerlin();
                                     this.setState({ isStudent: false });
                                 }}>No, I am not a student</button>
-                                <button onClick={back}>Back</button>
+                                <button className="backButton" onClick={back}>Back</button>
                             </div>
                         )}
                         </Controls>
@@ -107,15 +103,14 @@ export default class DecisionTree extends React.Component {
                     </Step>
                     <Step name="daysInBerlin">
                         <div className="stepContent">
-                            How many day are you planning to stay in Berlin?
-                            <br />
+                            <h4>How many day are you planning to stay in Berlin?</h4>
                             <Controls>
                             {({ destinations: { withBikes }, back }) => (
-                                <div>
+                                <div className="buttonContainer">
                                     <input type="number" min="1" step="1" name="days"
                                     onChange={this.handleChange} value={days} />
                                     <button onClick={withBikes}>Next</button>
-                                    <button onClick={back}>Back</button>
+                                    <button className="backButton" onClick={back}>Back</button>
                                 </div>
                             )}
                             </Controls>
@@ -123,11 +118,10 @@ export default class DecisionTree extends React.Component {
                     </Step>
                     <Step name="withBikes">
                         <div className="stepContent">
-                            Are you going to bring your bike(s) with you?
-                            <br />
+                            <h4>Are you going to bring your bike(s) with you?</h4>
                             <Controls>
                             {({ destinations: { conclusion, bikesNumber }, back }) => (
-                                <div>
+                                <div className="buttonContainer">
                                     <button onClick={
                                         () => {
                                             bikesNumber();
@@ -137,7 +131,7 @@ export default class DecisionTree extends React.Component {
                                             conclusion();
                                             this.setState({ bikesNumber: 0 });
                                         }}>No</button>
-                                    <button onClick={back}>Back</button>
+                                    <button className="backButton" onClick={back}>Back</button>
                                 </div>
                             )}
                             </Controls>
@@ -145,15 +139,14 @@ export default class DecisionTree extends React.Component {
                     </Step>
                     <Step name="bikesNumber">
                         <div className="stepContent">
-                            How many bikes will you bring together with you?
-                            <br />
+                            <h4>How many bikes will you bring together with you?</h4>
                             <Controls>
                             {({ destinations: { conclusion }, back }) => (
-                                <div>
+                                <div className="buttonContainer">
                                     <input type="number" min="1" step="1" name="bikes"
                                     onChange={this.handleChange} value={bikes} />
                                     <button onClick={conclusion}>Next</button>
-                                    <button onClick={back}>Back</button>
+                                    <button className="backButton" onClick={back}>Back</button>
                                 </div>
                             )}
                             </Controls>

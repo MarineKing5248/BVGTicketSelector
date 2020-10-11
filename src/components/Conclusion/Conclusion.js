@@ -1,22 +1,20 @@
 import React from 'react';
 import './Conclusion.css'
 
-
+const ticketPriceList = {
+    dayTicket: 8.6,
+    sevenDayTicket: 34,
+    monthlyTicket: 84,
+    studentMonthlyTicket: 57,
+    dayBikeTicket: 4.9,
+    monthlyBikeTicket: 10.5,
+    yearlyTicket: 840,
+    groupTicket: 23.5
+}
 
 export default function Conclusion({ touristNumber, isStudent, days, bikes }) {
-
-    const ticketPriceList = {
-        dayTicket: 8.6,
-        sevenDayTicket: 34,
-        monthlyTicket: 84,
-        studentMonthlyTicket: 57,
-        dayBikeTicket: 4.9,
-        monthlyBikeTicket: 10.5,
-        yearlyTicket: 840,
-        groupTicket: 23.5
-    }
-
-    const months = parseInt(days/30);
+    const years = parseInt(days/365);
+    const months = parseInt((days%365)/30);
     const weeks = parseInt((days%30)/7);
     const daysRemain = parseInt((days%30)%7);
 
@@ -41,19 +39,20 @@ export default function Conclusion({ touristNumber, isStudent, days, bikes }) {
             }
         } else {
             if(months >= 10 ) {
-                yearlyTicketNumber = 1; 
+                yearlyTicketNumber = years; 
             } else {   
                 if(weeks >= 3) {
                     monthlyTicketNumber = months + 1;
                 } else {
                     monthlyTicketNumber = months;
                     sevenDayTicketNumber = weeks;
+                    dayTicketNumber = daysRemain;
                 }  
             }
         }
     } else if (touristNumber === 2) {
         if(months >= 10 ) {
-            yearlyTicketNumber = 2; 
+            yearlyTicketNumber = years * 2; 
         } else {   
             if(weeks >= 3) {
                 monthlyTicketNumber = (months + 1) * 2;
@@ -76,7 +75,7 @@ export default function Conclusion({ touristNumber, isStudent, days, bikes }) {
     ticketTotalPrice = dayTicketNumber * ticketPriceList.dayTicket + sevenDayTicketNumber * ticketPriceList.sevenDayTicket
     + monthlyTicketNumber * ticketPriceList.monthlyTicket + studentMonthlyTicketNumber * ticketPriceList.studentMonthlyTicket + dayBikeTicketNumber * ticketPriceList.dayBikeTicket + monthlyBikeTicketNumber * ticketPriceList.monthlyBikeTicket + yearlyTicketNumber * ticketPriceList.yearlyTicket + groupTicketNumber * ticketPriceList.groupTicket;
 
-    console.log(months, weeks, daysRemain, sevenDayTicketNumber,monthlyTicketNumber, studentMonthlyTicketNumber, dayBikeTicketNumber, monthlyBikeTicketNumber,yearlyTicketNumber, groupTicketNumber)
+    // console.log('ticketTotalPrice:', ticketTotalPrice, 'dayTicketNumber:', dayTicketNumber, 'sevenDayTicketNumber:', sevenDayTicketNumber, 'monthlyTicketNumber:', monthlyTicketNumber, 'studentMonthlyTicketNumber:', studentMonthlyTicketNumber, 'dayBikeTicketNumber:', dayBikeTicketNumber, 'monthlyBikeTicketNumber:', monthlyBikeTicketNumber,'yearlyTicketNumber:', yearlyTicketNumber, 'groupTicketNumber:', groupTicketNumber )
 
     return (
         <div className="conclusionSection">
@@ -84,14 +83,14 @@ export default function Conclusion({ touristNumber, isStudent, days, bikes }) {
                 {touristNumber === 1 ? <p>
                     You are visiting Berlin alone.
                 </p> : <p>
-                    You are in a group of {touristNumber} people.
+                    You are in a group of <span>{touristNumber}</span> people.
                 </p>}
                 {isStudent && <p>and you are a student.</p>}
-                <p>You are going to stay in Berlin for {days} days</p>
-                {bikes !==0 && <p>You will take {bikes} bike(s) with you</p>}
+                <p>You are going to stay in Berlin for <span>{days}</span> days</p>
+                {bikes !==0 && <p>You will take <span>{bikes}</span> bike(s) with you</p>}
             </div>
             
-            <p>The total price is {ticketTotalPrice} Euro</p>
+            <p>The total price is <span>{ticketTotalPrice}</span> Euro</p>
             <p>You need to buy the following number of tickets for you or your friends:</p>
             <div>
             {dayTicketNumber > 0 && 

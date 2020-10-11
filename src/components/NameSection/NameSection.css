@@ -21,6 +21,7 @@
 
 .nameSectionContainer button {
     width: 8em;
+    height: 2em;
     color: white;
     background: #4C8FFB;
     border: 1px #3079ED solid;
@@ -31,4 +32,10 @@
     border: 1px #2F5BB7 solid;
     box-shadow: 0 1px 1px #EAEAEA, inset 0 1px 0 #5A94F1;
     background: #3F83F1;
+}
+
+@media(max-width: 768px) {
+    .nameSectionContainer input[type=text] {
+        width: 80%
+    }
 }
